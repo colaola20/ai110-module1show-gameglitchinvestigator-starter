@@ -30,7 +30,6 @@ st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
-# FIXME: session state attempts starts with 1 while should start with 0
 if "attempts" not in st.session_state:
     st.session_state.attempts = 0
 
@@ -71,8 +70,12 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
+    print("New game")
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.score = 0
+    st.session_state.history = []
+    st.session_state[f"guess_input_{difficulty}"] = ""
+    st.session_state.secret = random.randint(low, high)
     st.success("New game started.")
     st.rerun()
 
@@ -87,7 +90,7 @@ if submit:
     st.session_state.attempts += 1
 
     ok, guess_int, err = parse_guess(raw_guess)
-
+    print(ok)
     if not ok:
         st.session_state.history.append(raw_guess)
         st.error(err)
