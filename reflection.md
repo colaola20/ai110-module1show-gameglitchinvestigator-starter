@@ -8,12 +8,23 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the secret number kept changing" or "the hints were backwards").
 
+  - The difficulty levels aren't applying. When I start an easy round which should pick a number from a range 1 to 20, it picks from 1 to 100 and lower the number of attempts, making the game more complicated than before. Similar think with hard round where range suppose to be 1 to 50 with 4 attemots, but range stays the same - 1 to 100.
+ 
+  - The game don't provide correct feedback to a player, specifying always the opposite direction "Go lower." instead of "Go higher.".
+
+  - The New Game button isn't starting a new game after a player has finished the round.
+
+  - The round discription doesn't correspond to the round settings. For example, for normal round, the description says that player has 8 attemps while in reality only 7.
 ---
 
 ## 2. How did you use AI as a teammate?
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
+- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)? 
+- Claude Code
+
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
+- Claude sugested to switch feedback messages when checking if guess > secret which fixed the hint's error. I verified it by playing the game.
+
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
 ---
