@@ -1,5 +1,8 @@
+# FIX: Refactored all game logic into separate logic_utils.py file
+
 def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty."""
+    # FIX: changed ranges for "Normal" and "Hard" difficulties.
     if difficulty == "Easy":
         return 1, 20
     if difficulty == "Normal":
@@ -40,7 +43,7 @@ def check_guess(guess, secret):
     """
     if guess == secret:
         return "Win", "🎉 Correct!"
-
+    # FIX: Swapped "GO LOWER" AND "GO HIGHER" in try and except blocks.
     try:
         if guess > secret:
             return "Too High", "📉 Go LOWER!"

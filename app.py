@@ -31,6 +31,7 @@ if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
 if "attempts" not in st.session_state:
+    # FIX: Initialized attempts to 0 instead of 1.
     st.session_state.attempts = 0
 
 if "score" not in st.session_state:
@@ -48,6 +49,7 @@ if "game_id" not in st.session_state:
 st.subheader("Make a guess")
 
 st.info(
+    # FIX: used dynamic low/high values from get_range_for_difficulty instead of hardcoded 1 and 100
     f"Guess a number between {low} and {high}. "
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
@@ -73,7 +75,9 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
-    print("New game")
+    # FIX: fixed new game secret range to use difficulty-based low/high instead of hardcoded 1-100. Initialized score to 0, reset history to an empty list. 
+    # FIX: cleared input field when new game starts, using new game_id state.
+    # FIX: Added status reset to "playing" when new game starts.
     st.session_state.attempts = 0
     st.session_state.score = 0
     st.session_state.history = []
@@ -94,7 +98,6 @@ if submit:
     st.session_state.attempts += 1
 
     ok, guess_int, err = parse_guess(raw_guess)
-    print(ok)
     if not ok:
         st.session_state.history.append(raw_guess)
         st.error(err)
